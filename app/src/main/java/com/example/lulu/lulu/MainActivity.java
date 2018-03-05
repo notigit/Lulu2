@@ -1,20 +1,16 @@
 package com.example.lulu.lulu;
 
-import android.content.Context;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.util.UUID;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -31,12 +27,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         webView = (WebView) findViewById(R.id.webView);
 //        webView.loadUrl("http://juju.011pp.com:11116/");
-        webView.loadUrl("https://www.baidu.com/");
+        webView.loadUrl("http://video.sina.com.cn/p/news/o/doc/2018-03-04/210168059742.html");
         WebSettings webSettings = webView .getSettings();
         webSettings.setDefaultTextEncodingName("UTF-8");
         webSettings.setJavaScriptEnabled(true); //支持js
         webSettings.setAllowFileAccess(true); // 允许访问文件
-//        webSettings.setJavaScriptCanOpenWindowsAutomatically(true); //支持通过JS打开新窗口
+        //支持全屏
+//        webView.setWebChromeClient(new WebChromeClient(){
+//            @Override
+//            public void onShowCustomView(View view, CustomViewCallback callback) {
+//                super.onShowCustomView(view, callback);
+//                Log.e("TAG", "onShowCustomView: " );
+//            }
+//
+//            @Override
+//            public void onHideCustomView() {
+//                super.onHideCustomView();
+//                Log.e("TAG", "onHideCustomView: " );
+//            }
+//        });
 
          String androidId = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
 
